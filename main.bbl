@@ -1,4 +1,4 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{5}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,5 +29,10 @@ A.~W. Services.
 \newblock Aws educate, 2016{\natexlab{b}}.
 \newblock \url{https://aws.amazon.com/pt/education/awseducate/}, acessado em
   Março de 2016.
+
+\bibitem[Services(2016{\natexlab{c}})]{ec2}
+A.~W. Services.
+\newblock Servidor de nuvem e hospedagem do ec2 - aws, 2016{\natexlab{c}}.
+\newblock \url{https://aws.amazon.com/pt/ec2/}, acessado em Março de 2016.
 
 \end{thebibliography}

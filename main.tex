@@ -15,7 +15,7 @@
 \usepackage{color}
 \geometry{a4paper}
 
-\title{Título}
+\title{Automatização do Gerenciamento e Implantação de Instâncias AWS EC2 para Ensino de Computação Distribuída}
 \author{Cezar Augusto Contini Bernardi \\ \emph{Universidade Federal de Santa Maria}}
 
 \begin{document}
@@ -26,7 +26,7 @@
 
 \begin{description} \itemsep 0pt
 
-\item{\textbf{Resumo:}} RESUMO
+\item{\textbf{Resumo:}} Este projeto busca a melhora do processo de ensino aprendizagem de computação distribuída utilizando cloud computing. Infelizmente, o uso dessas ferramentas é laborioso, principalmente quando se aplica a uma turma completa de Programação Paralela ou Sistemas Distribuídos, por exemplo. Portanto, o foco deste trabalho é a automatização do gerenciamento de IaaS da Amazon Web Services, visando facilitar a implantação e uso desses recursos para ensino.
 
 
 \item{\textbf{Período de Execução}}: Março de 2016 até Julho de 2016
@@ -63,10 +63,11 @@ A plataforma de escolha para realização da proposta é a Amazon Web Services (
 
 Outra razão para essa escolha se dá pelo fato de toda a infraestrutura física ser gerenciada pela Amazon. Todos esses aspectos somados apresentam uma grande vantagem em relação ao uso de OpenStack, outra plataforma semelhante a AWS. Uma vantagem do OpenStack é que poderia ser implementado em servidores próprios, caso estivessem disponíveis.
 
+Mais especificamente, visa-se o uso do AWS Elastic Compute Cloud (EC2). Esse tipo de instância é focada em processamento, oferecendo mais controle dos aspectos computacionais a serem utilizados \cite{ec2}.
 
-Valores aws
+Os valores associados ao uso do AWS EC2, com instâncias otimizadas para computação localizados no leste dos Estados Unidos da America variam de 0,105 à 1,68 USD por hora. Por exemplo, o custo de utilização de 4 instâncias intermediárias, com 8 vCPUs, 15 GB de memória RAM e 160 GB de armazenamento em SSD por um dia inteiro custaria 40,32 USD.
 
-Quanto ao aspecto de ensino-aprendizagem, as melhoras seriam notáveis, pois experimentos com MPI para programação paralela ou RMI para programação distribuída seriam realizados em ambientes realistas. Um ponto importante é que cada aluno teria acesso a esse ambiente para si só e poderia experimentar mais e compreender melhor o funcionamentos dessas técnicas de programação.
+Quanto ao ensino-aprendizagem, as melhoras seriam notáveis, pois experimentos com MPI para programação paralela ou RMI para programação distribuída seriam realizados em ambientes realistas. Um ponto importante é que cada aluno teria acesso a esse ambiente para si só e poderia experimentar mais e compreender melhor o funcionamentos dessas técnicas de programação.
 
 Porém, a implantação desse modelo é uma tarefa minusciosa e repetitiva, tornando mais difícil para professores fazerem uso dela. Este projeto visa automatizar tal tarefa, torná-la trivial, assim como tornar o uso desses serviços na nuvem mais atrativo do ponto de vista acadêmico.
 
@@ -74,7 +75,7 @@ De forma mais específica, a orquestração desse ambiente pode ser feita de mai
 
 O uso de scripts puros significa ter de implementar manualmente funções que se comunicam com o AWS e realizam as operações desejadas, sendo que cada configuração das instâncias requer uma operação. Esse modelo pode tornar-se confuso e trabalhoso quando se trata de diversas instâncias.
 
-Já o Puppet conta com a desvantagem de requerer uma instância rodando sem parar, para ser o nó master, onde os módulos com a definição da infraestrutura estão configurados, e de onde cada nó agente leria as informações e se configuraria. A vantagem é que neste modelo as configurações são bastante flexíveis, possibilitando modificações e personalizações com grande facilidade \cite{puppetaws}.
+Já o Puppet conta com a desvantagem de requerer uma instância rodando sem parar como nodo master, onde os módulos com a definição da infraestrutura estão configurados, e de onde cada nó agente leria as informações e se configuraria. A vantagem é que neste modelo as configurações são bastante flexíveis, possibilitando modificações e personalizações com grande facilidade \cite{puppetaws}.
 
 O Amazon Cloud Formation é possivelmente o modelo mais consistente, pois ele opera a partir de um arquivo JSON descrevendo toda a infraestrutura, desde quantidade de instâncias até os recursos instalados em cada uma delas \cite{awscf}.
 
@@ -92,11 +93,19 @@ Criar um modelo para automatizar a implantação de um serviço de infraestrutur
 \end{itemize}
 
 \section{Justificativa}
-Este trabalho tem grande potencial para melhorar o processo de ensino aprendizagem de programação paralela e distribuída, facilitando o acesso à recursos já disponíveis, porém restritivos. A automatização de implantação de tais recursos é um grande passo para a adoção mais ampla e fácil.3
+Este trabalho tem grande potencial para melhorar o processo de ensino aprendizagem de programação paralela e distribuída, facilitando o acesso à recursos já disponíveis, porém restritivos. A automatização de implantação de tais recursos é um grande passo para a adoção mais ampla e fácil.
+
 
 \section{Revisão de Literatura}
 
-Revisão
+\subsection{Trabalhos Relacionados}
+Nesta seção serão apresentados trabalhos com caraterísticas semelhantes as desejadas no desenvolvimento deste projeto.
+
+\subsubsection{Parallel Computing at Stanford University}
+Para o ensino de programação paralela na Universidade de Stanford, o professor Ph.D. Elliott Slaughter desenvolveu um script em Python para automatizar o gerenciamento da infraestrutura AWS utilizada.
+
+A infraestrutura a ser implantada pode ser configurada através de um arquivo JSON, para modificações mais gerais, e do script para modificações mais internas aos nodos.
+
 
 \section{Metodologia}
 Serão analisadas e estudadas ferramentas de orquestração para Amazon Web Services, com o intuito de escolher a mais adequada. Tendo definido a ferramenta, será realizado o desenvolvimento, procurando a melhor solução para o caso da Universidade Federal de Santa Maria.
@@ -107,11 +116,11 @@ Serão analisadas e estudadas ferramentas de orquestração para Amazon Web Serv
 Compreender o funcionamento e as técnicas e ferramentas de orquestração disponíveis para realização da tarefa.
 \item \label{activity:develop} \textbf{Desenvolvimento: }
 Aplicação das ferramentas de orquestração para criação de um ambiente propício ao ensino de computação paralela e ditribuída.
-\item \label{activity:exec} \textbf{Testes e experimentação: }
-Analisar e realizar modificações necessárias para tornar o ambiente mais apropriado.
 \item \label{activity:preview} \textbf{Prévia: }
 Apresentação do desenvolvimento realizado até o momento.
-\item  \label{activity:updates} \textbf{Atualização de estados dos experimentos}
+\item \label{activity:exec} \textbf{Testes e experimentação: }
+Analisar e realizar modificações necessárias para tornar o ambiente mais apropriado.
+
 
 \end{enumerate}
 \textbf{Cronograma}
@@ -122,9 +131,9 @@ Apresentação do desenvolvimento realizado até o momento.
 	Etapa & Março & Abril & Maio & Junho & Julho \\ \hline
 	\ref{activity:cloud} & \checkmark & & & \\
 	\ref{activity:develop} & \checkmark & \checkmark & & \\
-	\ref{activity:exec} & & \checkmark & \checkmark & \checkmark & \\
 	\ref{activity:preview} & & & \checkmark & & \\
-	\ref{activity:updates} & & &\checkmark & \checkmark & \checkmark \\
+	\ref{activity:exec} & & & \checkmark & \checkmark & \checkmark
+
 \end{tabular}
 \caption{Cronograma de Atividades}
 

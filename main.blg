@@ -1,0 +1,8 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+The style file: abbrvnat.bst
+Database file #1: ref.bib
+I was expecting an "="---line 20 of file ref.bib
+ :  note = {https://puppetlabs.com/solutions/aws}, acessado 
+ :                                                          em Março de 2016}
+I'm skipping whatever remains of this entry
+(There was 1 error message)

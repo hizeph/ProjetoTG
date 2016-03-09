@@ -37,7 +37,6 @@
     
     Laboratório de Sistemas de Computação
     
-    
 \item{\textbf{Área do Conhecimento}}: Ciência da Computação
 
 \item{\textbf{Linha de Pesquisa}}: ?***********************?
@@ -52,50 +51,68 @@
 
 \section{Introdução}
 
-Jogando umas palavaras chave aqui.
+Os serviços na nuvem, também conhecidos como cloud computing, tem expandido muito ultimamente, proporcionando diversas oportunidades de aplicação, nem sempre de fácil uso. Esses serviços podem ser classificados em três principais categorias, sendo elas Infraestrutura como um Serviço (IaaS), Plataforma como um Serviço (PaaS) e Software como um Serviço (SaaS) \cite{xaas}.
 
-Orquestração/automatização, Amazon Web Services, programação paralela, recursos computacionais, Cloud Formation/puppet/scripting, educação, 
+O modelo PaaS oferece abstração de diversas camadas, como sistema operacional, rede e infraestrutura, deixando-as prontas para o uso no desenvolvimento de aplicativos a serem disponibilizados na nuvem. Com isso o desenvolvedor pode focar mais no desenvolvimento. Um exemplo notável de tal serviço é o Google App Engine.
 
-Este projeto visa o uso de [ferramenta de orquestração] aliado ao Amazon Web Services (AWS) para proporcionar um ambiente prático e funcional no ensido de programação paralela na Universidade Federal de Santa Maria. AWS é uma plataforma ideal para tal cenário pois dispõe diversos recursos interessantes à aprendizagem de paralelismo.
+De forma semelhante, o SaaS disponibiliza aplicativos prontos para uso, novamente citando o Google como exemplo: Google Apps For Work (Drive, Gmail, Docs, entre outros).
 
-Dentre esses recursos pode-se listar a formação de clusters, multithreading e GPGPU, possibilitando aprendizagem de paralelismo local e distribuído, em mais de uma forma.
+Porém, este projeto visa o uso de IaaS, que foca em dar liberdade ao usuário montar a sua própria infraestrutura, gerenciando suas próprias máquinas virtuais, rede, sistema operacional e ambiente de desenvolvimento. Tal formato é interessante pois ele possibilita a customização da infraestrutura para cada caso desejado.
+
+A plataforma de escolha para realização da proposta é a Amazon Web Services (AWS). Tal plataforma foi a escolha pois ela provê acesso gratuito no período de 1 ano, com limitação de poder computacional, mas o  suficiente para realização do projeto. Outro ponto interessante é que a AWS tem um programa chamado AWS Educate \cite{awsedu}, que tem por objetivo prover crédito monetário para uso do AWS em educação.
+
+Outra razão para essa escolha se dá pelo fato de toda a infraestrutura física ser gerenciada pela Amazon. Todos esses aspectos somados apresentam uma grande vantagem em relação ao uso de OpenStack, outra plataforma semelhante a AWS. Uma vantagem do OpenStack é que poderia ser implementado em servidores próprios, caso estivessem disponíveis.
+
+
+Valores aws
+
+Quanto ao aspecto de ensino-aprendizagem, as melhoras seriam notáveis, pois experimentos com MPI para programação paralela ou RMI para programação distribuída seriam realizados em ambientes realistas. Um ponto importante é que cada aluno teria acesso a esse ambiente para si só e poderia experimentar mais e compreender melhor o funcionamentos dessas técnicas de programação.
+
+Porém, a implantação desse modelo é uma tarefa minusciosa e repetitiva, tornando mais difícil para professores fazerem uso dela. Este projeto visa automatizar tal tarefa, torná-la trivial, assim como tornar o uso desses serviços na nuvem mais atrativo do ponto de vista acadêmico.
+
+De forma mais específica, a orquestração desse ambiente pode ser feita de mais de uma forma, sendo elas, por exemplo, o uso de scripts puros, de módulos Puppet ou Amazon Cloud Formation. Tais modelos serão estudados e o mais adequado será escolhido para implementação.
+
+O uso de scripts puros significa ter de implementar manualmente funções que se comunicam com o AWS e realizam as operações desejadas, sendo que cada configuração das instâncias requer uma operação. Esse modelo pode tornar-se confuso e trabalhoso quando se trata de diversas instâncias.
+
+Já o Puppet conta com a desvantagem de requerer uma instância rodando sem parar, para ser o nó master, onde os módulos com a definição da infraestrutura estão configurados, e de onde cada nó agente leria as informações e se configuraria. A vantagem é que neste modelo as configurações são bastante flexíveis, possibilitando modificações e personalizações com grande facilidade \cite{puppetaws}.
+
+O Amazon Cloud Formation é possivelmente o modelo mais consistente, pois ele opera a partir de um arquivo JSON descrevendo toda a infraestrutura, desde quantidade de instâncias até os recursos instalados em cada uma delas \cite{awscf}.
 
 
 \section{Objetivos}
 \subsection{Objetivo Geral}
-Automatizar a implantação 
+Criar um modelo para automatizar a implantação de um serviço de infraestrutura em cloud para o ensino de computação distribuída e paralela.
 
 \subsection{Objetivos Específicos}
 \begin{itemize}
-	\item ...
-	\item ...
-	\item ...
-	\item ...
+	\item Estudar Amazon Web Services e ferramentas de orquestração para tal.
+	\item Implementar a orquestração.
+	\item Tornar essa implementação disponível publicamente para uso.
     
 \end{itemize}
 
 \section{Justificativa}
-Justificativa
-
-Justificativa
+Este trabalho tem grande potencial para melhorar o processo de ensino aprendizagem de programação paralela e distribuída, facilitando o acesso à recursos já disponíveis, porém restritivos. A automatização de implantação de tais recursos é um grande passo para a adoção mais ampla e fácil.3
 
 \section{Revisão de Literatura}
 
 Revisão
 
 \section{Metodologia}
-Metodologia
+Serão analisadas e estudadas ferramentas de orquestração para Amazon Web Services, com o intuito de escolher a mais adequada. Tendo definido a ferramenta, será realizado o desenvolvimento, procurando a melhor solução para o caso da Universidade Federal de Santa Maria.
 
 \section{Plano de Atividades e Cronograma}
 \begin{enumerate}
-\item \label{activity:cloud} \textbf{Estudo de ...}
-...
-\item \label{activity:develop} \textbf{Desenvolvimento...}
-...
-\item \label{activity:exec} \textbf{Teste/experimentação}
-...
+\item \label{activity:cloud} \textbf{Estudo do Amazon Web Services: }
+Compreender o funcionamento e as técnicas e ferramentas de orquestração disponíveis para realização da tarefa.
+\item \label{activity:develop} \textbf{Desenvolvimento: }
+Aplicação das ferramentas de orquestração para criação de um ambiente propício ao ensino de computação paralela e ditribuída.
+\item \label{activity:exec} \textbf{Testes e experimentação: }
+Analisar e realizar modificações necessárias para tornar o ambiente mais apropriado.
+\item \label{activity:preview} \textbf{Prévia: }
+Apresentação do desenvolvimento realizado até o momento.
 \item  \label{activity:updates} \textbf{Atualização de estados dos experimentos}
-...
+
 \end{enumerate}
 \textbf{Cronograma}
 
@@ -106,16 +123,19 @@ Metodologia
 	\ref{activity:cloud} & \checkmark & & & \\
 	\ref{activity:develop} & \checkmark & \checkmark & & \\
 	\ref{activity:exec} & & \checkmark & \checkmark & \checkmark & \\
+	\ref{activity:preview} & & & \checkmark & & \\
 	\ref{activity:updates} & & &\checkmark & \checkmark & \checkmark \\
 \end{tabular}
 \caption{Cronograma de Atividades}
 
 \end{table}
 \section{Recursos}
-Recursos
+Será utilizado o equipamento pessoal do orientando para o desenvolvimento. Também será utilizada uma conta gratuíta da Amazon Web Services.
+
 \section{Resultados Esperados}
-Resultados esperados
+Espera-se automatizar a implantação de um ambiente cloud com todas as ferramentas necessárias para o ensino-aprendizagem de computação paralela e distribuída.
+
 \bibliographystyle{abbrvnat}
-\bibliography{../graphics,../languages}
+\bibliography{ref}
 
 \end{document}

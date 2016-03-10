@@ -1,4 +1,4 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -34,5 +34,11 @@ A.~W. Services.
 A.~W. Services.
 \newblock Servidor de nuvem e hospedagem do ec2 - aws, 2016{\natexlab{c}}.
 \newblock \url{https://aws.amazon.com/pt/ec2/}, acessado em Março de 2016.
+
+\bibitem[Slaughter(2014)]{stanford}
+E.~Slaughter.
+\newblock Cs-149 setup, 2014.
+\newblock \url{https://bitbucket.org/elliottslaughter/cs149-setup}, acessado em
+  Março de 2016.
 
 \end{thebibliography}

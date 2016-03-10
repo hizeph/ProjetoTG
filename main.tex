@@ -67,7 +67,7 @@ Mais especificamente, visa-se o uso do AWS Elastic Compute Cloud (EC2). Esse tip
 
 Os valores associados ao uso do AWS EC2, com instâncias otimizadas para computação localizados no leste dos Estados Unidos da America variam de 0,105 à 1,68 USD por hora. Por exemplo, o custo de utilização de 4 instâncias intermediárias, com 8 vCPUs, 15 GB de memória RAM e 160 GB de armazenamento em SSD por um dia inteiro custaria 40,32 USD.
 
-Quanto ao ensino-aprendizagem, as melhoras seriam notáveis, pois experimentos com MPI para programação paralela ou RMI para programação distribuída seriam realizados em ambientes realistas. Um ponto importante é que cada aluno teria acesso a esse ambiente para si só e poderia experimentar mais e compreender melhor o funcionamentos dessas técnicas de programação.
+Quanto ao ensino-aprendizagem, as melhoras seriam notáveis, pois experimentos com MPI para programação paralela ou RMI/RPC para programação distribuída seriam realizados em ambientes realistas. Um ponto importante é que cada aluno teria acesso a esse ambiente para si só e poderia experimentar mais e compreender melhor o funcionamentos dessas técnicas de programação.
 
 Porém, a implantação desse modelo é uma tarefa minusciosa e repetitiva, tornando mais difícil para professores fazerem uso dela. Este projeto visa automatizar tal tarefa, torná-la trivial, assim como tornar o uso desses serviços na nuvem mais atrativo do ponto de vista acadêmico.
 
@@ -102,10 +102,9 @@ Este trabalho tem grande potencial para melhorar o processo de ensino aprendizag
 Nesta seção serão apresentados trabalhos com caraterísticas semelhantes as desejadas no desenvolvimento deste projeto.
 
 \subsubsection{Parallel Computing at Stanford University}
-Para o ensino de programação paralela na Universidade de Stanford, o professor Ph.D. Elliott Slaughter desenvolveu um script em Python para automatizar o gerenciamento da infraestrutura AWS utilizada.
+Para o ensino de programação paralela na Universidade de Stanford, o professor Ph.D. Elliott Slaughter desenvolveu um script em Python para automatizar o gerenciamento da infraestrutura AWS utilizada \cite{stanford}.
 
 A infraestrutura a ser implantada pode ser configurada através de um arquivo JSON, para modificações mais gerais, e do script para modificações mais internas aos nodos.
-
 
 \section{Metodologia}
 Serão analisadas e estudadas ferramentas de orquestração para Amazon Web Services, com o intuito de escolher a mais adequada. Tendo definido a ferramenta, será realizado o desenvolvimento, procurando a melhor solução para o caso da Universidade Federal de Santa Maria.
